@@ -1,5 +1,5 @@
 # Variables
-APP_NAME := "stockapp"
+APP_NAME := "ghcr.io/jamesglennan/stockapp"
 DOCKER_IMAGE := $(APP_NAME)
 TAG := latest
 
@@ -18,4 +18,7 @@ run:
 clean:
 		rm -f main
 
-.PHONY: build image push run clean
+deploy:
+		kubectl apply -Rf deploy
+
+.PHONY: build image push run clean deploy

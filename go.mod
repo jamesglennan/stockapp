@@ -1,3 +1,3 @@
-module github.com/jamesglennan/pi-take-home
+module github.com/jamesglennan/stockapp
 
 go 1.22.3

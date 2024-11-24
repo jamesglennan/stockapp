@@ -57,6 +57,11 @@ func main() {
 		log.Printf("Serving request from %v", r.RemoteAddr)
 
 	})
+	//Readiness check for deployment once server starts
+	http.HandleFunc("/ready", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "ok")
+	})
+
 	fmt.Println("Starting server at port 8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		fmt.Println("Failed to start server:", err)
@@ -148,5 +153,3 @@ func getData(stock string, nDays int, APIToken string) map[string]float64 {
 	results["average"] /= float64(nDays)
 	return results
 }
-
-// Serve data
